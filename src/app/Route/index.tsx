@@ -10,7 +10,7 @@ const AppRoute = () => {
         <Route>
           <Route path="/" element={<LandingPage />} />
           <Route path="create" element={<CreatePage />} />
-          <Route path="edit" element={<EditPage />} />
+          <Route path="edit/:userId" element={<EditPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

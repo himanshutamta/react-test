@@ -7,7 +7,7 @@ const initialState  = [
         name: "Himanshu"
     },
     {
-        id: 2,
+        id: 26,
         name: "Rakesh"
     },
     {

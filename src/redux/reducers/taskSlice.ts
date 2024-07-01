@@ -1,41 +1,35 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { Priority, Status, TaskState } from '../../app/types';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { TaskState } from '../../app/types';
+
+interface AllTasksData {
+    alltask: TaskState[]
+  }
 
 
-const initialState: TaskState[] = [
-    {   title: "react task",
-        taskId: 1,
-        status: Status.inProgress,
-        members: [{id:1, name: "himanshu"}],
-        dueDate: new Date(),
-        isAssigned: true,
-        estimatedHour: 2,
-        priority: Priority.high
-    },
-    {   title: "react task2",
-        taskId: 2,
-        status: Status.completed,
-        members: [{id:1, name: "himanshu"},{id:2, name: "Rocky"}],
-        dueDate: new Date(),
-        isAssigned: true,
-        estimatedHour: 2,
-        priority: Priority.low
-    },
-    {   title: "react task3",
-        taskId: 3,
-        status: Status.unInitiated,
-        members: [{id:1, name: "himanshu"}],
-        dueDate: new Date(),
-        isAssigned: true,
-        estimatedHour: 2,
-        priority: Priority.medium
-    }
-]
+const initialState: AllTasksData = {
+    alltask :[
+    
+]}
 
 const taskSlice = createSlice({
     name: 'tasks',
     initialState,
-    reducers: {}
+    reducers: {
+        addTask: (state, action: PayloadAction<any>) => {
+            state.alltask.push(action.payload)
+         },
+        
+        removeTask: (state, action: PayloadAction<number>) => {
+            state.alltask = state.alltask.filter(task => task.taskId !== action.payload)
+        },
+
+        editSelectTask: (state, action: PayloadAction<any>) => {
+            state.alltask = state.alltask.map((item) => item.taskId === action.payload.taskId ? action.payload : item)
+        }
+        
+    }
 })
 
+
+export const {addTask, removeTask, editSelectTask } = taskSlice.actions;
 export default taskSlice.reducer

@@ -1,10 +1,13 @@
 import React from "react";
-import FormSection from "../../sharedComponent/FormSection";
+import CreateTaskForm from "../../sharedComponent/CreateTaskForm";
 
 const CreatePage = (props: any) => {
   return (
     <div>
-      <FormSection />
+      <div className="text-center text-2xl text-black/80 font-semibold my-5">
+        CREATE NEW TASK
+      </div>
+      <CreateTaskForm />
     </div>
   );
 };

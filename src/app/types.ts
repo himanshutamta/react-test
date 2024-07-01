@@ -8,9 +8,9 @@ export interface TaskState {
     taskId: number;
     status: Status;
     members: Members[];
-    dueDate: Date;
+    dueDate: any;
     isAssigned: boolean;
-    estimatedHour: number;
+    estimatedHour: any;
     priority: Priority;
 }
 
